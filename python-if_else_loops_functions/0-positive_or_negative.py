@@ -1,12 +1,10 @@
 #!/usr/bin/python3
-import random
-number = random.randint(-100, 100)
+number = 98
 
 if number > 0:
-    sign = "positive"
+    print(f"{number} is positive")
 elif number == 0:
-    sign = "zero"
+    print(f"{number} is zero")
 else:
-    sign = "negative"
+    print(f"{number} is negative")
 
-print(f"{number} is {sign}")
