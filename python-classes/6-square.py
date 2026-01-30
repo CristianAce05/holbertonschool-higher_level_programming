@@ -6,14 +6,9 @@ class Square:
     """Represents a square."""
 
     def __init__(self, size=0, position=(0, 0)):
-        """Initialize a new Square.
-
-        Args:
-            size (int): Size of the square (default 0)
-            position (tuple): Position offset (default (0, 0))
-        """
-        self.size = size          # validates via setter
-        self.position = position  # validates via setter
+        """Initialize a new Square."""
+        self.size = size
+        self.position = position
 
     @property
     def size(self):
@@ -36,11 +31,7 @@ class Square:
 
     @position.setter
     def position(self, value):
-        """Set the position of the square with validation.
-
-        Raises:
-            TypeError: If value is not a tuple of 2 positive integers.
-        """
+        """Set the position of the square with validation."""
         if (not isinstance(value, tuple) or
             len(value) != 2 or
             not all(isinstance(i, int) for i in value) or
@@ -63,3 +54,6 @@ class Square:
             print()
 
         # print each row
+        for _ in range(self.__size):
+            print(" " * self.__position[0] + "#" * self.__size)
+
