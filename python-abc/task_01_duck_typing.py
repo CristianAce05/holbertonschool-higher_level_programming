@@ -23,7 +23,8 @@ class Circle(Shape):
     """Circle shape."""
 
     def __init__(self, radius):
-        self.radius = radius
+        # Handle negative radius by taking absolute value
+        self.radius = abs(radius)
 
     def area(self):
         return math.pi * self.radius ** 2
@@ -56,8 +57,11 @@ def shape_info(shape):
 if __name__ == "__main__":
     circle = Circle(5)
     rectangle = Rectangle(4, 6)
+    circle_negative = Circle(-5)
 
     print("Circle info:")
     shape_info(circle)
     print("\nRectangle info:")
     shape_info(rectangle)
+    print("\nNegative radius circle info:")
+    shape_info(circle_negative)
