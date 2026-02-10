@@ -20,21 +20,24 @@ class CustomObject:
         self.is_student = is_student
 
     def display(self):
-        """Print the object's attributes in the specified format."""
+        """Print the object's attributes in the required format."""
         print(f"Name: {self.name}")
         print(f"Age: {self.age}")
-        print(f"Is Student: {self.is_student}")
+        print(f'Is Student: {self.is_student}')
 
     def serialize(self, filename):
         """Serialize the current instance to a file using pickle.
 
         Args:
             filename (str): The file to save the object to.
+
+        Returns:
+            None if an error occurs.
         """
         try:
             with open(filename, "wb") as f:
                 pickle.dump(self, f)
-        except (OSError, pickle.PicklingError):
+        except Exception:
             return None
 
     @classmethod
@@ -45,7 +48,7 @@ class CustomObject:
             filename (str): The file to load the object from.
 
         Returns:
-            CustomObject or None: Returns the loaded instance or None if error.
+            CustomObject or None: Returns the loaded instance, or None if error.
         """
         try:
             with open(filename, "rb") as f:
@@ -53,5 +56,5 @@ class CustomObject:
                 if isinstance(obj, cls):
                     return obj
                 return None
-        except (OSError, pickle.UnpicklingError):
+        except Exception:
             return None
