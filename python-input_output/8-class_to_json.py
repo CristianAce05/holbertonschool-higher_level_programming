@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Return the dictionary description of a class instance for JSON serialization."""
+"""Return the dictionary description of a class instance for JSON use."""
 
 
 def class_to_json(obj):
