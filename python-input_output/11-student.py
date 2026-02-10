@@ -9,9 +9,9 @@ class Student:
         """Initialize a Student instance.
 
         Args:
-            first_name (str): The student's first name
-            last_name (str): The student's last name
-            age (int): The student's age
+            first_name (str): The student's first name.
+            last_name (str): The student's last name.
+            age (int): The student's age.
         """
         self.first_name = first_name
         self.last_name = last_name
@@ -28,10 +28,11 @@ class Student:
         return self.__dict__.copy()
 
     def reload_from_json(self, json):
-        """Replace all attributes of the Student instance with values from json.
+        """Replace all attributes of the Student instance using json.
 
         Args:
-            json (dict): Keys are attribute names, values are their values.
+            json (dict): Keys are attribute names.
+                Values are the corresponding attribute values.
         """
         for key, value in json.items():
             setattr(self, key, value)
