@@ -67,14 +67,15 @@ def verify_password(username, password):
     return check_password_hash(u["password"], password)
 
 
-@app.route("/basic-protected")
-def basic_protected():
-    if auth is None:
+if auth is not None:
+    @app.route("/basic-protected")
+    @auth.login_required
+    def basic_protected():
+        return "Basic Auth: Access Granted"
+else:
+    @app.route("/basic-protected")
+    def basic_protected():
         return jsonify({"error": "HTTPBasicAuth not available"}), 500
-    # Use auth.login_required behavior manually to avoid decorator complexity
-    auth_result = auth.current_user()
-    # If not authenticated, HTTPBasicAuth will have already sent a 401 via challenge
-    return "Basic Auth: Access Granted"
 
 
 @app.route("/login", methods=["POST"])
