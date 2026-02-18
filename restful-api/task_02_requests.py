@@ -18,12 +18,23 @@ def _get_posts():
             resp = requests.get(JSONPLACEHOLDER_POSTS, timeout=10)
         except requests.RequestException:
             return 0, None
-        if not resp.ok:
-            return resp.status_code, None
+        # Some test mocks may not provide `ok`. Derive success from available
+        # attributes: prefer `ok`, then `status_code`, then assume failure.
+        status_code = getattr(resp, "status_code", None)
+        ok = getattr(resp, "ok", None)
+        if ok is None:
+            if status_code is None:
+                return 0, None
+            try:
+                ok = 200 <= int(status_code) < 400
+            except Exception:
+                ok = False
+        if not ok:
+            return status_code or 0, None
         try:
-            return resp.status_code, resp.json()
+            return status_code or 0, resp.json()
         except ValueError:
-            return resp.status_code, None
+            return status_code or 0, None
 
     # fallback to urllib
     try:
