@@ -31,7 +31,7 @@ class SimpleAPIHandler(BaseHTTPRequestHandler):
         if path == "/data":
             payload = {"name": "John", "age": 30, "city": "New York"}
             body = json.dumps(payload).encode("utf-8")
-            self._send_response(200, body, "application/json; charset=utf-8")
+            self._send_response(200, body, "application/json")
             return
 
         if path == "/status":
@@ -42,7 +42,7 @@ class SimpleAPIHandler(BaseHTTPRequestHandler):
         if path == "/info":
             payload = {"version": "1.0", "description": "A simple API built with http.server"}
             body = json.dumps(payload).encode("utf-8")
-            self._send_response(200, body, "application/json; charset=utf-8")
+            self._send_response(200, body, "application/json")
             return
 
         # Unknown endpoint
