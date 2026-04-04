@@ -1,59 +1,124 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
-  <title id="title">Python Objects Diagram</title>
-  <desc id="desc">An original diagram showing object identity, mutability, and function argument behavior in Python.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="628" viewBox="0 0 1200 628">
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#f7efe4" />
-      <stop offset="100%" stop-color="#d8ecff" />
+      <stop offset="0%" stop-color="#1a1a2e"/>
+      <stop offset="100%" stop-color="#16213e"/>
     </linearGradient>
-    <linearGradient id="box" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#ffffff" />
-      <stop offset="100%" stop-color="#eef7ff" />
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#4fc3f7"/>
+      <stop offset="100%" stop-color="#0288d1"/>
     </linearGradient>
-    <style>
-      .title { font: 700 62px 'DejaVu Sans', sans-serif; fill: #16324f; }
-      .subtitle { font: 400 28px 'DejaVu Sans', sans-serif; fill: #34506b; }
-      .label { font: 700 28px 'DejaVu Sans', sans-serif; fill: #16324f; }
-      .body { font: 400 24px 'DejaVu Sans', sans-serif; fill: #34506b; }
-      .mono { font: 700 26px 'DejaVu Sans Mono', monospace; fill: #9a3412; }
-      .small { font: 400 22px 'DejaVu Sans', sans-serif; fill: #34506b; }
-    </style>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#ffd54f"/>
+      <stop offset="100%" stop-color="#ffb300"/>
+    </linearGradient>
   </defs>
-  <rect width="1600" height="900" fill="url(#bg)" rx="36" />
-  <circle cx="1320" cy="170" r="120" fill="#ffd9a8" opacity="0.55" />
-  <circle cx="280" cy="770" r="150" fill="#c5e4ff" opacity="0.55" />
-  <text x="120" y="140" class="title">Mutable, Immutable, Everything Is an Object</text>
-  <text x="120" y="190" class="subtitle">Identity, type, mutability, and function argument behavior in Python</text>
 
-  <rect x="110" y="270" width="400" height="230" rx="24" fill="url(#box)" stroke="#7ab6e8" stroke-width="4" />
-  <text x="145" y="335" class="label">Identity and Type</text>
-  <text x="145" y="390" class="mono">id(obj)</text>
-  <text x="145" y="430" class="mono">type(obj)</text>
-  <text x="145" y="475" class="small">Two names can point to one object.</text>
+  <!-- Background -->
+  <rect width="1200" height="628" fill="url(#bg)" rx="0"/>
 
-  <rect x="600" y="270" width="400" height="230" rx="24" fill="url(#box)" stroke="#7ab6e8" stroke-width="4" />
-  <text x="635" y="335" class="label">Mutable Objects</text>
-  <text x="635" y="390" class="mono">list.append(4)</text>
-  <text x="635" y="430" class="body">Changes contents in place.</text>
-  <text x="635" y="475" class="small">Identity usually stays the same.</text>
+  <!-- Subtle grid pattern -->
+  <g opacity="0.04" stroke="#ffffff" stroke-width="1">
+    <line x1="0" y1="0" x2="0" y2="628"/><line x1="60" y1="0" x2="60" y2="628"/>
+    <line x1="120" y1="0" x2="120" y2="628"/><line x1="180" y1="0" x2="180" y2="628"/>
+    <line x1="240" y1="0" x2="240" y2="628"/><line x1="300" y1="0" x2="300" y2="628"/>
+    <line x1="360" y1="0" x2="360" y2="628"/><line x1="420" y1="0" x2="420" y2="628"/>
+    <line x1="480" y1="0" x2="480" y2="628"/><line x1="540" y1="0" x2="540" y2="628"/>
+    <line x1="600" y1="0" x2="600" y2="628"/><line x1="660" y1="0" x2="660" y2="628"/>
+    <line x1="720" y1="0" x2="720" y2="628"/><line x1="780" y1="0" x2="780" y2="628"/>
+    <line x1="840" y1="0" x2="840" y2="628"/><line x1="900" y1="0" x2="900" y2="628"/>
+    <line x1="960" y1="0" x2="960" y2="628"/><line x1="1020" y1="0" x2="1020" y2="628"/>
+    <line x1="1080" y1="0" x2="1080" y2="628"/><line x1="1140" y1="0" x2="1140" y2="628"/>
+    <line x1="0" y1="60" x2="1200" y2="60"/><line x1="0" y1="120" x2="1200" y2="120"/>
+    <line x1="0" y1="180" x2="1200" y2="180"/><line x1="0" y1="240" x2="1200" y2="240"/>
+    <line x1="0" y1="300" x2="1200" y2="300"/><line x1="0" y1="360" x2="1200" y2="360"/>
+    <line x1="0" y1="420" x2="1200" y2="420"/><line x1="0" y1="480" x2="1200" y2="480"/>
+    <line x1="0" y1="540" x2="1200" y2="540"/>
+  </g>
 
-  <rect x="1090" y="270" width="400" height="230" rx="24" fill="url(#box)" stroke="#7ab6e8" stroke-width="4" />
-  <text x="1125" y="335" class="label">Immutable Objects</text>
-  <text x="1125" y="390" class="mono">a = a + [5]</text>
-  <text x="1125" y="430" class="body">Creates a new object.</text>
-  <text x="1125" y="475" class="small">The name is rebound to new memory.</text>
+  <!-- Decorative circles -->
+  <circle cx="950" cy="120" r="180" fill="#4fc3f7" opacity="0.06"/>
+  <circle cx="1050" cy="350" r="120" fill="#ffd54f" opacity="0.05"/>
+  <circle cx="150" cy="520" r="100" fill="#4fc3f7" opacity="0.04"/>
 
-  <path d="M510 385 C560 385, 550 385, 600 385" fill="none" stroke="#16324f" stroke-width="6" marker-end="url(#arrow)" />
-  <path d="M1000 385 C1050 385, 1040 385, 1090 385" fill="none" stroke="#16324f" stroke-width="6" marker-end="url(#arrow)" />
+  <!-- Python logo simplified — two interlocking shapes -->
+  <g transform="translate(90, 160)" opacity="0.9">
+    <!-- Blue half -->
+    <path d="M60,0 C60,0 60,0 30,0 C13.4,0 0,13.4 0,30 L0,60 C0,76.6 13.4,90 30,90 L60,90 L60,96 L30,96 C30,96 30,96 30,96 C6,96 6,126 30,126 L60,126 C76.6,126 90,112.6 90,96 L90,30 C90,13.4 76.6,0 60,0 Z" fill="#4fc3f7"/>
+    <circle cx="28" cy="28" r="8" fill="#1a1a2e"/>
+    <!-- Gold half -->
+    <path d="M30,126 C30,126 30,126 60,126 C76.6,126 90,112.6 90,96 L90,66 C90,49.4 76.6,36 60,36 L30,36 L30,30 L60,30 C60,30 60,30 60,30 C84,30 84,0 60,0 L30,0 C13.4,0 0,13.4 0,30 L0,96 C0,112.6 13.4,126 30,126 Z" fill="#ffd54f" opacity="0.35"/>
+    <circle cx="62" cy="98" r="8" fill="#1a1a2e"/>
+  </g>
 
-  <rect x="220" y="610" width="1160" height="170" rx="28" fill="#16324f" opacity="0.95" />
-  <text x="270" y="680" class="label" fill="#ffffff">Core rule:</text>
-  <text x="450" y="680" class="body" fill="#ffffff">Functions receive references to objects. Mutating a mutable object is visible outside the function,</text>
-  <text x="270" y="725" class="body" fill="#ffffff">but rebinding a local name only changes what that local name points to.</text>
+  <!-- Title -->
+  <text x="90" y="380" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-weight="700" font-size="52" fill="#ffffff" letter-spacing="-1">
+    Everything Is an Object
+  </text>
 
-  <defs>
-    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
-      <path d="M0,0 L12,6 L0,12 z" fill="#16324f" />
-    </marker>
-  </defs>
+  <!-- Subtitle -->
+  <text x="90" y="430" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-weight="400" font-size="24" fill="#8eaccd">
+    Mutable, Immutable &amp; How Python Really Works
+  </text>
+
+  <!-- Accent line -->
+  <rect x="90" y="450" width="160" height="4" rx="2" fill="url(#accent)"/>
+
+  <!-- Tag pills -->
+  <g font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="16" font-weight="600">
+    <rect x="90" y="480" width="90" height="32" rx="16" fill="#4fc3f7" opacity="0.15"/>
+    <text x="113" y="501" fill="#4fc3f7">Python</text>
+
+    <rect x="195" y="480" width="70" height="32" rx="16" fill="#4fc3f7" opacity="0.15"/>
+    <text x="213" y="501" fill="#4fc3f7">OOP</text>
+
+    <rect x="280" y="480" width="110" height="32" rx="16" fill="#4fc3f7" opacity="0.15"/>
+    <text x="298" y="501" fill="#4fc3f7">Mutability</text>
+
+    <rect x="405" y="480" width="100" height="32" rx="16" fill="#ffd54f" opacity="0.15"/>
+    <text x="421" y="501" fill="#ffd54f">Memory</text>
+  </g>
+
+  <!-- Right side: simple object diagram -->
+  <g transform="translate(720, 140)" font-family="'SF Mono', 'Fira Code', 'Consolas', monospace" font-size="18">
+    <!-- Variable boxes -->
+    <rect x="0" y="0" width="100" height="40" rx="8" fill="#4fc3f7" opacity="0.15" stroke="#4fc3f7" stroke-width="1.5"/>
+    <text x="50" y="26" text-anchor="middle" fill="#4fc3f7" font-weight="600">a</text>
+
+    <rect x="0" y="70" width="100" height="40" rx="8" fill="#4fc3f7" opacity="0.15" stroke="#4fc3f7" stroke-width="1.5"/>
+    <text x="50" y="96" text-anchor="middle" fill="#4fc3f7" font-weight="600">b</text>
+
+    <!-- Arrows -->
+    <line x1="100" y1="20" x2="220" y2="50" stroke="#4fc3f7" stroke-width="2" opacity="0.6"/>
+    <line x1="100" y1="90" x2="220" y2="60" stroke="#ffd54f" stroke-width="2" opacity="0.6"/>
+
+    <!-- Object box -->
+    <rect x="220" y="20" width="200" height="70" rx="12" fill="none" stroke="#ffffff" stroke-width="1.5" opacity="0.3"/>
+    <text x="260" y="50" fill="#ffffff" opacity="0.9" font-size="16">[1, 2, 3]</text>
+    <text x="260" y="75" fill="#8eaccd" font-size="13">id: 0x7f...</text>
+
+    <!-- Mutable label -->
+    <rect x="260" y="110" width="100" height="26" rx="13" fill="#4caf50" opacity="0.2"/>
+    <text x="310" y="128" text-anchor="middle" fill="#81c784" font-size="13" font-family="'Segoe UI', sans-serif" font-weight="600">mutable</text>
+
+    <!-- Second diagram: immutable -->
+    <rect x="0" y="180" width="100" height="40" rx="8" fill="#ffd54f" opacity="0.15" stroke="#ffd54f" stroke-width="1.5"/>
+    <text x="50" y="206" text-anchor="middle" fill="#ffd54f" font-weight="600">x</text>
+
+    <line x1="100" y1="200" x2="220" y2="220" stroke="#ffd54f" stroke-width="2" opacity="0.6"/>
+
+    <rect x="220" y="195" width="200" height="55" rx="12" fill="none" stroke="#ffffff" stroke-width="1.5" opacity="0.3"/>
+    <text x="260" y="222" fill="#ffffff" opacity="0.9" font-size="16">42</text>
+    <text x="260" y="242" fill="#8eaccd" font-size="13">id: 0x9a...</text>
+
+    <!-- Immutable label -->
+    <rect x="248" y="268" width="120" height="26" rx="13" fill="#ff7043" opacity="0.2"/>
+    <text x="308" y="286" text-anchor="middle" fill="#ff8a65" font-size="13" font-family="'Segoe UI', sans-serif" font-weight="600">immutable</text>
+  </g>
+
+  <!-- Bottom credit bar -->
+  <rect x="0" y="590" width="1200" height="38" fill="#000000" opacity="0.3"/>
+  <text x="90" y="615" font-family="'Segoe UI', sans-serif" font-size="14" fill="#8eaccd">
+    Holberton School — Python: Everything is Object
+  </text>
 </svg>
