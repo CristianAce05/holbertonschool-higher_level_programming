@@ -217,6 +217,4 @@ Do not rely on this result
 ```
 
 ## Publishing URLs
-Medium article URL: pending manual publication
-LinkedIn article or post URL: pending manual publication
-Any additional share URL: pending manual publication
+LinkedIn article/post URL: pending manual publication
